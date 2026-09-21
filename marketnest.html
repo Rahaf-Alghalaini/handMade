@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MarketNest | Handcrafted Artisan Goods</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- External Pure CSS File -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body id="top">
+
+    <!-- ====================================================================
+         Pure CSS State Toggles (Zero JavaScript)
+         ==================================================================== -->
+    <!-- Mobile Nav Drawer Checkbox -->
+    <input type="checkbox" id="mobileNavCheckbox" class="state-toggle" aria-hidden="true">
+
+    <!-- Mobile Filter Drawer Checkbox -->
+    <input type="checkbox" id="filterDrawerCheckbox" class="state-toggle" aria-hidden="true">
+
+    <!-- Category Filter Radios (Pure CSS filtering) -->
+    <input type="radio" name="cat-filter" id="cat-all" class="state-toggle" checked>
+    <input type="radio" name="cat-filter" id="cat-ceramics" class="state-toggle">
+    <input type="radio" name="cat-filter" id="cat-textiles" class="state-toggle">
+    <input type="radio" name="cat-filter" id="cat-woodwork" class="state-toggle">
+    <input type="radio" name="cat-filter" id="cat-jewelry" class="state-toggle">
+
+    <!-- Backdrops for Mobile Drawers (Pure CSS close via labels) -->
+    <label for="mobileNavCheckbox" class="drawer-backdrop nav-backdrop" aria-hidden="true"></label>
+    <label for="filterDrawerCheckbox" class="drawer-backdrop filter-backdrop" aria-hidden="true"></label>
+
+    <!-- ====================================================================
+         Mobile Slide Navigation Drawer (Pure CSS)
+         ==================================================================== -->
+    <aside class="mobile-nav-drawer" id="mobileNavDrawer" aria-label="Mobile Navigation">
+        <div class="mobile-nav-header">
+            <span class="brand-logo" style="font-size: 20px;">
+                <svg class="brand-icon" style="width: 24px; height: 24px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 3L2 12h3v8h14v-8h3L12 3z"/>
+                </svg>
+                MarketNest
+            </span>
+            <label for="mobileNavCheckbox" class="modal-close" style="position: static;" aria-label="Close menu">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            </label>
+        </div>
+
+        <form action="#marketplace" method="get" style="position: relative; margin: 8px 0;">
+            <input type="text" class="search-input" placeholder="Search goods...">
+        </form>
+
+        <ul class="mobile-nav-links">
+            <li><a href="#marketplace">Shop All Crafts</a></li>
+            <li><a href="#sellers">Meet Artisans</a></li>
+            <li><a href="#story">Our Story</a></li>
+            <li><a href="#story">Journal</a></li>
+        </ul>
+    </aside>
+
+    <!-- ====================================================================
+         Header / Navigation
+         ==================================================================== -->
+    <header>
+        <div class="header-container">
+            <!-- Mobile Menu Toggle Button (Pure CSS label) -->
+            <label for="mobileNavCheckbox" class="mobile-toggle" aria-label="Open navigation menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+            </label>
+
+            <a href="#top" class="brand-logo">
+                <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 3L2 12h3v8h14v-8h3L12 3z"/>
+                    <path d="M9 20v-6h6v6"/>
+                </svg>
+                MarketNest
+            </a>
+
+            <nav class="nav-links">
+                <a href="#marketplace" class="nav-link active">Shop</a>
+                <a href="#sellers" class="nav-link">Artisans</a>
+                <a href="#story" class="nav-link">Our Story</a>
+                <a href="#story" class="nav-link">Journal</a>
+            </nav>
+
+            <form action="#marketplace" method="get" class="header-search">
+                <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                <input type="text" class="search-input" placeholder="Search ceramics, jewelry, textiles..." id="searchInput">
+            </form>
+
+            <div class="header-actions">
+                <a href="#toast-cart" class="cart-btn" aria-label="Cart">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                    <span class="cart-badge" id="cartCount">3</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ====================================================================
+         Hero Banner
+         ==================================================================== -->
+    <section class="hero-banner">
+        <div class="hero-container">
+            <span class="hero-tag">Community-Driven Marketplace</span>
+            <h1 class="text-display hero-title">Every Handmade Piece Tells a Story</h1>
+            <p class="hero-desc">Discover unique, handcrafted items made with care by independent artisans around the world. No mass production. Just genuine craft.</p>
+            <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+                <a href="#marketplace" class="btn btn-primary btn-lg">Explore Handcrafted Goods</a>
+                <a href="#sellers" class="btn btn-secondary btn-lg">Meet Our Makers</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================================================================
+         Main Marketplace Container
+         ==================================================================== -->
+    <main class="main-container" id="marketplace">
+        
+        <!-- Mobile Trigger for Filter Drawer (Pure CSS label) -->
+        <div style="grid-column: 1 / -1;">
+            <label for="filterDrawerCheckbox" class="btn btn-secondary btn-md filter-mobile-trigger">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+                Filter &amp; Sort Products
+            </label>
+        </div>
+
+        <!-- Left Sidebar / Mobile Filter Slide Drawer -->
+        <aside class="sidebar-filter" id="filterSidebar">
+            <div class="filter-drawer-header">
+                <h3 class="filter-title" style="margin-bottom:0; border:none;">Filter Products</h3>
+                <label for="filterDrawerCheckbox" class="modal-close" style="position: static;" aria-label="Close filter drawer">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                </label>
+            </div>
+
+            <div class="filter-section">
+                <h3 class="filter-title">Categories</h3>
+                <div class="checkbox-group">
+                    <label class="checkbox-label" for="cat-ceramics">
+                        <input type="checkbox" checked value="Ceramics">
+                        <span class="custom-checkbox"></span>
+                        Ceramics &amp; Pottery
+                    </label>
+                    <label class="checkbox-label" for="cat-jewelry">
+                        <input type="checkbox" checked value="Jewelry">
+                        <span class="custom-checkbox"></span>
+                        Handmade Jewelry
+                    </label>
+                    <label class="checkbox-label" for="cat-textiles">
+                        <input type="checkbox" checked value="Textiles">
+                        <span class="custom-checkbox"></span>
+                        Textiles &amp; Home
+                    </label>
+                    <label class="checkbox-label" for="cat-woodwork">
+                        <input type="checkbox" checked value="Woodwork">
+                        <span class="custom-checkbox"></span>
+                        Woodwork Crafts
+                    </label>
+                </div>
+            </div>
+
+            <div class="filter-section">
+                <h3 class="filter-title">Price Range</h3>
+                <div class="price-inputs">
+                    <input type="number" class="price-input" id="minPrice" placeholder="Min $" value="0">
+                    <span>-</span>
+                    <input type="number" class="price-input" id="maxPrice" placeholder="Max $" value="200">
+                </div>
+            </div>
+
+            <div class="filter-section">
+                <h3 class="filter-title">Material</h3>
+                <div class="material-chips">
+                    <label class="material-chip-label">
+                        <input type="checkbox" class="material-chip-input">
+                        <span class="chip">Stoneware</span>
+                    </label>
+                    <label class="material-chip-label">
+                        <input type="checkbox" class="material-chip-input">
+                        <span class="chip">Alpaca</span>
+                    </label>
+                    <label class="material-chip-label">
+                        <input type="checkbox" class="material-chip-input">
+                        <span class="chip">Silver</span>
+                    </label>
+                    <label class="material-chip-label">
+                        <input type="checkbox" class="material-chip-input">
+                        <span class="chip">Walnut</span>
+                    </label>
+                </div>
+            </div>
+
+            <a href="#marketplace" class="btn btn-primary btn-md" style="width: 100%; margin-top: 12px; text-decoration: none;">Apply Filters</a>
+        </aside>
+
+        <!-- Right Content Area -->
+        <section>
+            <div class="content-header">
+                <div class="content-title-row">
+                    <h2 class="text-headline">Handcrafted Artisan Goods</h2>
+                    <span class="text-caption" id="itemCountDisplay" style="color: var(--color-text-muted);">
+                        <span class="count-all">Showing 6 items</span>
+                        <span class="count-cat count-ceramics">Showing 1 item</span>
+                        <span class="count-cat count-textiles">Showing 1 item</span>
+                        <span class="count-cat count-woodwork">Showing 1 item</span>
+                        <span class="count-cat count-jewelry">Showing 3 items</span>
+                    </span>
+                </div>
+
+                <!-- Category Pills (Pure CSS Radio Controls) -->
+                <div class="category-scroll">
+                    <label for="cat-all" class="category-chip chip-all">All Items</label>
+                    <label for="cat-ceramics" class="category-chip chip-ceramics">Ceramics</label>
+                    <label for="cat-textiles" class="category-chip chip-textiles">Textiles</label>
+                    <label for="cat-woodwork" class="category-chip chip-woodwork">Woodwork</label>
+                    <label for="cat-jewelry" class="category-chip chip-jewelry">Jewelry</label>
+                </div>
+            </div>
+
+            <!-- Product Grid (Pure HTML with Rich Product Data) -->
+            <div class="product-grid" id="productGrid">
+
+                <!-- Product 1: Rustic Stoneware Mug -->
+                <div class="product-card" data-category="Ceramics">
+                    <div class="card-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?auto=format&fit=crop&q=80&w=600" alt="Rustic Stoneware Mug" class="card-image">
+                        <label class="fav-label">
+                            <input type="checkbox" class="fav-toggle-input">
+                            <span class="fav-btn" aria-label="Favorite">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-badge-row">
+                            <span class="eco-tag">HAND-THROWN</span>
+                        </div>
+                        <h3 class="product-title">Rustic Stoneware Mug</h3>
+                        
+                        <div class="maker-info">
+                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=200" alt="Elena Rostova" class="maker-avatar">
+                            <div class="maker-details">
+                                <span class="maker-name">By Elena Rostova</span>
+                                <span class="maker-location">Vermont, USA</span>
+                            </div>
+                        </div>
+
+                        <div class="card-footer">
+                            <span class="product-price">$38.00</span>
+                            <div style="display: flex; gap: 6px;">
+                                <a href="#modal-MN-10293" class="btn btn-ghost btn-sm">Quick View</a>
+                                <a href="#toast-cart" class="btn btn-primary btn-sm">Add to Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2: Cozy Alpaca Throw -->
+                <div class="product-card" data-category="Textiles">
+                    <div class="card-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&q=80&w=600" alt="Cozy Alpaca Throw" class="card-image">
+                        <label class="fav-label">
+                            <input type="checkbox" class="fav-toggle-input">
+                            <span class="fav-btn" aria-label="Favorite">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-badge-row">
+                            <span class="eco-tag">ORGANIC WOOL</span>
+                        </div>
+                        <h3 class="product-title">Cozy Alpaca Throw</h3>
+                        
+                        <div class="maker-info">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=200" alt="Andean Weavers Co." class="maker-avatar">
+                            <div class="maker-details">
+                                <span class="maker-name">By Andean Weavers Co.</span>
+                                <span class="maker-location">Cusco, Peru</span>
+                            </div>
+                        </div>
+
+                        <div class="card-footer">
+                            <span class="product-price">$120.00</span>
+                            <div style="display: flex; gap: 6px;">
+                                <a href="#modal-MN-20482" class="btn btn-ghost btn-sm">Quick View</a>
+                                <a href="#toast-cart" class="btn btn-primary btn-sm">Add to Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3: Ocean Whisper Necklace -->
+                <div class="product-card" data-category="Jewelry">
+                    <div class="card-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=600" alt="Ocean Whisper Necklace" class="card-image">
+                        <label class="fav-label">
+                            <input type="checkbox" class="fav-toggle-input">
+                            <span class="fav-btn" aria-label="Favorite">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-badge-row">
+                            <span class="eco-tag">RECYCLED SILVER</span>
+                        </div>
+                        <h3 class="product-title">Ocean Whisper Necklace</h3>
+                        
+                        <div class="maker-info">
+                            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=200" alt="Artisan Clay Studio" class="maker-avatar">
+                            <div class="maker-details">
+                                <span class="maker-name">By Artisan Clay Studio</span>
+                                <span class="maker-location">Maine, USA</span>
+                            </div>
+                        </div>
+
+                        <div class="card-footer">
+                            <span class="product-price">$85.00</span>
+                            <div style="display: flex; gap: 6px;">
+                                <a href="#modal-MN-33819" class="btn btn-ghost btn-sm">Quick View</a>
+                                <a href="#toast-cart" class="btn btn-primary btn-sm">Add to Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4: Walnut Cutting Board -->
+                <div class="product-card" data-category="Woodwork">
+                    <div class="card-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1615873968403-89e068629265?auto=format&fit=crop&q=80&w=600" alt="Walnut Cutting Board" class="card-image">
+                        <label class="fav-label">
+                            <input type="checkbox" class="fav-toggle-input">
+                            <span class="fav-btn" aria-label="Favorite">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-badge-row">
+                            <span class="eco-tag">ORGANIC OIL FINISH</span>
+                        </div>
+                        <h3 class="product-title">Walnut Cutting Board</h3>
+                        
+                        <div class="maker-info">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200" alt="Mateo Silva" class="maker-avatar">
+                            <div class="maker-details">
+                                <span class="maker-name">By Mateo Silva</span>
+                                <span class="maker-location">Oregon, USA</span>
+                            </div>
+                        </div>
+
+                        <div class="card-footer">
+                            <span class="product-price">$95.00</span>
+                            <div style="display: flex; gap: 6px;">
+                                <a href="#modal-MN-44912" class="btn btn-ghost btn-sm">Quick View</a>
+                                <a href="#toast-cart" class="btn btn-primary btn-sm">Add to Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 5: Azure Drops Earrings -->
+                <div class="product-card" data-category="Jewelry">
+                    <div class="card-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&q=80&w=600" alt="Azure Drops Earrings" class="card-image">
+                        <label class="fav-label">
+                            <input type="checkbox" class="fav-toggle-input">
+                            <span class="fav-btn" aria-label="Favorite">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-badge-row">
+                            <span class="eco-tag">HANDMADE</span>
+                        </div>
+                        <h3 class="product-title">Azure Drops Earrings</h3>
+                        
+                        <div class="maker-info">
+                            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=200" alt="Artisan Clay Studio" class="maker-avatar">
+                            <div class="maker-details">
+                                <span class="maker-name">By Artisan Clay Studio</span>
+                                <span class="maker-location">Maine, USA</span>
+                            </div>
+                        </div>
+
+                        <div class="card-footer">
+                            <span class="product-price">$45.00</span>
+                            <div style="display: flex; gap: 6px;">
+                                <a href="#modal-MN-55102" class="btn btn-ghost btn-sm">Quick View</a>
+                                <a href="#toast-cart" class="btn btn-primary btn-sm">Add to Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 6: Earth Tones Cuff -->
+                <div class="product-card" data-category="Jewelry">
+                    <div class="card-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&q=80&w=600" alt="Earth Tones Cuff" class="card-image">
+                        <label class="fav-label">
+                            <input type="checkbox" class="fav-toggle-input">
+                            <span class="fav-btn" aria-label="Favorite">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-badge-row">
+                            <span class="eco-tag">RAW COPPER &amp; SILVER</span>
+                        </div>
+                        <h3 class="product-title">Earth Tones Cuff</h3>
+                        
+                        <div class="maker-info">
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=200" alt="Sienna Craft Workshop" class="maker-avatar">
+                            <div class="maker-details">
+                                <span class="maker-name">By Sienna Craft Workshop</span>
+                                <span class="maker-location">Arizona, USA</span>
+                            </div>
+                        </div>
+
+                        <div class="card-footer">
+                            <span class="product-price">$120.00</span>
+                            <div style="display: flex; gap: 6px;">
+                                <a href="#modal-MN-66481" class="btn btn-ghost btn-sm">Quick View</a>
+                                <a href="#toast-cart" class="btn btn-primary btn-sm">Add to Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ====================================================================
+         Featured Artisans / Sellers Section
+         ==================================================================== -->
+    <section class="sellers-section" id="sellers">
+        <div class="sellers-container">
+            <div class="section-header">
+                <span class="text-overline" style="color: var(--color-primary);">Crafted With Passion</span>
+                <h2 class="text-headline" style="margin-top: 4px;">Meet Our Featured Artisans</h2>
+                <p class="text-body" style="color: var(--color-text-muted); margin-top: 8px;">Behind every piece in MarketNest is an independent maker pouring their expertise, time, and heart into their craft.</p>
+            </div>
+
+            <div class="sellers-grid">
+                <!-- Seller 1 -->
+                <div class="seller-card">
+                    <div class="seller-card-header">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=200" alt="Elena Rostova" class="seller-large-avatar">
+                        <div>
+                            <h3 class="text-subhead" style="font-size: 20px;">Elena Rostova</h3>
+                            <span class="text-caption" style="color: var(--color-tertiary); font-weight: 600;">Ceramicist • Vermont, USA</span>
+                        </div>
+                    </div>
+                    <p class="seller-bio">"I throw every piece individually on my kickwheel using locally harvested stoneware clay and hand-mixed ceramic glazes inspired by mountain landscapes."</p>
+                    <div class="seller-products-preview">
+                        <img src="https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?auto=format&fit=crop&q=80&w=300" alt="Product 1" class="preview-img">
+                        <img src="https://images.unsplash.com/photo-1610701596007-11502861dcfa?auto=format&fit=crop&q=80&w=300" alt="Product 2" class="preview-img">
+                    </div>
+                </div>
+
+                <!-- Seller 2 -->
+                <div class="seller-card">
+                    <div class="seller-card-header">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200" alt="Mateo Silva" class="seller-large-avatar">
+                        <div>
+                            <h3 class="text-subhead" style="font-size: 20px;">Mateo Silva</h3>
+                            <span class="text-caption" style="color: var(--color-tertiary); font-weight: 600;">Woodworker • Oregon, USA</span>
+                        </div>
+                    </div>
+                    <p class="seller-bio">"Sourcing sustainably fallen native timber, I craft heirloom serving boards and kitchen goods finished only with organic walnut oil and natural beeswax."</p>
+                    <div class="seller-products-preview">
+                        <img src="https://images.unsplash.com/photo-1615873968403-89e068629265?auto=format&fit=crop&q=80&w=300" alt="Product 1" class="preview-img">
+                        <img src="https://images.unsplash.com/photo-1546484475-7f7bd55792da?auto=format&fit=crop&q=80&w=300" alt="Product 2" class="preview-img">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================================================================
+         Quick View Modals (Pure CSS :target activation)
+         ==================================================================== -->
+    
+    <!-- Modal 1: Rustic Stoneware Mug -->
+    <div class="modal-overlay" id="modal-MN-10293">
+        <a href="#marketplace" class="modal-backdrop-link" aria-label="Close modal"></a>
+        <div class="modal-content">
+            <a href="#marketplace" class="modal-close" aria-label="Close modal">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            </a>
+            <div class="modal-body">
+                <div>
+                    <img src="https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?auto=format&fit=crop&q=80&w=600" alt="Rustic Stoneware Mug" class="modal-gallery-img">
+                </div>
+                <div>
+                    <p class="modal-sku">Item ID: MN-10293</p>
+                    <span class="eco-tag" style="margin-bottom: 12px; display: inline-block;">HAND-THROWN</span>
+                    <h2 class="text-headline" style="margin-bottom: 8px;">Rustic Stoneware Mug</h2>
+                    <p class="product-price" style="margin-bottom: 16px;">$38.00</p>
+                    
+                    <div class="maker-info" style="background: var(--color-bg); padding: 12px; border-radius: var(--radius-md);">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=200" alt="Elena Rostova" class="maker-avatar">
+                        <div class="maker-details">
+                            <span class="maker-name">Handmade by Elena Rostova</span>
+                            <span class="maker-location">Vermont, USA</span>
+                        </div>
+                    </div>
+
+                    <p class="text-body-sm" style="margin: 16px 0; color: var(--color-text-muted);">Each mug is individually hand-thrown on a potter's wheel using stoneware clay and glazed with natural minerals.</p>
+                    
+                    <p class="text-caption" style="margin-bottom: 24px; color: var(--color-tertiary); font-weight: 600;">
+                        🌱 Ships plastic-free directly from maker's workshop in Vermont, USA.
+                    </p>
+
+                    <div style="display: flex; gap: 12px;">
+                        <a href="#toast-cart" class="btn btn-primary btn-lg" style="flex: 1; text-align: center;">Add to Cart • $38.00</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 2: Cozy Alpaca Throw -->
+    <div class="modal-overlay" id="modal-MN-20482">
+        <a href="#marketplace" class="modal-backdrop-link" aria-label="Close modal"></a>
+        <div class="modal-content">
+            <a href="#marketplace" class="modal-close" aria-label="Close modal">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            </a>
+            <div class="modal-body">
+                <div>
+                    <img src="https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&q=80&w=600" alt="Cozy Alpaca Throw" class="modal-gallery-img">
+                </div>
+                <div>
+                    <p class="modal-sku">Item ID: MN-20482</p>
+                    <span class="eco-tag" style="margin-bottom: 12px; display: inline-block;">ORGANIC WOOL</span>
+                    <h2 class="text-headline" style="margin-bottom: 8px;">Cozy Alpaca Throw</h2>
+                    <p class="product-price" style="margin-bottom: 16px;">$120.00</p>
+                    
+                    <div class="maker-info" style="background: var(--color-bg); padding: 12px; border-radius: var(--radius-md);">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=200" alt="Andean Weavers Co." class="maker-avatar">
+                        <div class="maker-details">
+                            <span class="maker-name">Handmade by Andean Weavers Co.</span>
+                            <span class="maker-location">Cusco, Peru</span>
+                        </div>
+                    </div>
+
+                    <p class="text-body-sm" style="margin: 16px 0; color: var(--color-text-muted);">Woven from 100% natural alpaca wool using centuries-old Peruvian handloom methods.</p>
+                    
+                    <p class="text-caption" style="margin-bottom: 24px; color: var(--color-tertiary); font-weight: 600;">
+                        🌱 Ships plastic-free directly from maker's workshop in Cusco, Peru.
+                    </p>
+
+                    <div style="display: flex; gap: 12px;">
+                        <a href="#toast-cart" class="btn btn-primary btn-lg" style="flex: 1; text-align: center;">Add to Cart • $120.00</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 3: Ocean Whisper Necklace -->
+    <div class="modal-overlay" id="modal-MN-33819">
+        <a href="#marketplace" class="modal-backdrop-link" aria-label="Close modal"></a>
+        <div class="modal-content">
+            <a href="#marketplace" class="modal-close" aria-label="Close modal">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            </a>
+            <div class="modal-body">
+                <div>
+                    <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=600" alt="Ocean Whisper Necklace" class="modal-gallery-img">
+                </div>
+                <div>
+                    <p class="modal-sku">Item ID: MN-33819</p>
+                    <span class="eco-tag" style="margin-bottom: 12px; display: inline-block;">RECYCLED SILVER</span>
+                    <h2 class="text-headline" style="margin-bottom: 8px;">Ocean Whisper Necklace</h2>
+                    <p class="product-price" style="margin-bottom: 16px;">$85.00</p>
+                    
+                    <div class="maker-info" style="background: var(--color-bg); padding: 12px; border-radius: var(--radius-md);">
+                        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=200" alt="Artisan Clay Studio" class="maker-avatar">
+                        <div class="maker-details">
+                            <span class="maker-name">Handmade by Artisan Clay Studio</span>
+                            <span class="maker-location">Maine, USA</span>
+                        </div>
+                    </div>
+
+                    <p class="text-body-sm" style="margin: 16px 0; color: var(--color-text-muted);">Hand-poured translucent resin with embedded real beach mineral fragments, mounted on a solid recycled sterling silver chain.</p>
+                    
+                    <p class="text-caption" style="margin-bottom: 24px; color: var(--color-tertiary); font-weight: 600;">
+                        🌱 Ships plastic-free directly from maker's workshop in Maine, USA.
+                    </p>
+
+                    <div style="display: flex; gap: 12px;">
+                        <a href="#toast-cart" class="btn btn-primary btn-lg" style="flex: 1; text-align: center;">Add to Cart • $85.00</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 4: Walnut Cutting Board -->
+    <div class="modal-overlay" id="modal-MN-44912">
+        <a href="#marketplace" class="modal-backdrop-link" aria-label="Close modal"></a>
+        <div class="modal-content">
+            <a href="#marketplace" class="modal-close" aria-label="Close modal">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            </a>
+            <div class="modal-body">
+                <div>
+                    <img src="https://images.unsplash.com/photo-1615873968403-89e068629265?auto=format&fit=crop&q=80&w=600" alt="Walnut Cutting Board" class="modal-gallery-img">
+                </div>
+                <div>
+                    <p class="modal-sku">Item ID: MN-44912</p>
+                    <span class="eco-tag" style="margin-bottom: 12px; display: inline-block;">ORGANIC OIL FINISH</span>
+                    <h2 class="text-headline" style="margin-bottom: 8px;">Walnut Cutting Board</h2>
+                    <p class="product-price" style="margin-bottom: 16px;">$95.00</p>
+                    
+                    <div class="maker-info" style="background: var(--color-bg); padding: 12px; border-radius: var(--radius-md);">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200" alt="Mateo Silva" class="maker-avatar">
+                        <div class="maker-details">
+                            <span class="maker-name">Handmade by Mateo Silva</span>
+                            <span class="maker-location">Oregon, USA</span>
+                        </div>
+                    </div>
+
+                    <p class="text-body-sm" style="margin: 16px 0; color: var(--color-text-muted);">Carved from sustainably sourced American black walnut timber. Finished with organic beeswax and cold-pressed walnut oil.</p>
+                    
+                    <p class="text-caption" style="margin-bottom: 24px; color: var(--color-tertiary); font-weight: 600;">
+                        🌱 Ships plastic-free directly from maker's workshop in Oregon, USA.
+                    </p>
+
+                    <div style="display: flex; gap: 12px;">
+                        <a href="#toast-cart" class="btn btn-primary btn-lg" style="flex: 1; text-align: center;">Add to Cart • $95.00</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 5: Azure Drops Earrings -->
+    <div class="modal-overlay" id="modal-MN-55102">
+        <a href="#marketplace" class="modal-backdrop-link" aria-label="Close modal"></a>
+        <div class="modal-content">
+            <a href="#marketplace" class="modal-close" aria-label="Close modal">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            </a>
+            <div class="modal-body">
+                <div>
+                    <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&q=80&w=600" alt="Azure Drops Earrings" class="modal-gallery-img">
+                </div>
+                <div>
+                    <p class="modal-sku">Item ID: MN-55102</p>
+                    <span class="eco-tag" style="margin-bottom: 12px; display: inline-block;">HANDMADE</span>
+                    <h2 class="text-headline" style="margin-bottom: 8px;">Azure Drops Earrings</h2>
+                    <p class="product-price" style="margin-bottom: 16px;">$45.00</p>
+                    
+                    <div class="maker-info" style="background: var(--color-bg); padding: 12px; border-radius: var(--radius-md);">
+                        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=200" alt="Artisan Clay Studio" class="maker-avatar">
+                        <div class="maker-details">
+                            <span class="maker-name">Handmade by Artisan Clay Studio</span>
+                            <span class="maker-location">Maine, USA</span>
+                        </div>
+                    </div>
+
+                    <p class="text-body-sm" style="margin: 16px 0; color: var(--color-text-muted);">Lightweight artisan drop earrings with natural turquoise beads and sterling silver wire wrapping.</p>
+                    
+                    <p class="text-caption" style="margin-bottom: 24px; color: var(--color-tertiary); font-weight: 600;">
+                        🌱 Ships plastic-free directly from maker's workshop in Maine, USA.
+                    </p>
+
+                    <div style="display: flex; gap: 12px;">
+                        <a href="#toast-cart" class="btn btn-primary btn-lg" style="flex: 1; text-align: center;">Add to Cart • $45.00</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 6: Earth Tones Cuff -->
+    <div class="modal-overlay" id="modal-MN-66481">
+        <a href="#marketplace" class="modal-backdrop-link" aria-label="Close modal"></a>
+        <div class="modal-content">
+            <a href="#marketplace" class="modal-close" aria-label="Close modal">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            </a>
+            <div class="modal-body">
+                <div>
+                    <img src="https://images.unsplash.com/photo-1611591475179-425d12590749?auto=format&fit=crop&q=80&w=600" alt="Earth Tones Cuff" class="modal-gallery-img">
+                </div>
+                <div>
+                    <p class="modal-sku">Item ID: MN-66481</p>
+                    <span class="eco-tag" style="margin-bottom: 12px; display: inline-block;">RAW COPPER &amp; SILVER</span>
+                    <h2 class="text-headline" style="margin-bottom: 8px;">Earth Tones Cuff</h2>
+                    <p class="product-price" style="margin-bottom: 16px;">$120.00</p>
+                    
+                    <div class="maker-info" style="background: var(--color-bg); padding: 12px; border-radius: var(--radius-md);">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=200" alt="Sienna Craft Workshop" class="maker-avatar">
+                        <div class="maker-details">
+                            <span class="maker-name">Handmade by Sienna Craft Workshop</span>
+                            <span class="maker-location">Arizona, USA</span>
+                        </div>
+                    </div>
+
+                    <p class="text-body-sm" style="margin: 16px 0; color: var(--color-text-muted);">Multi-layered hand-hammered copper cuff bracelet styled with warm earthy tone patinas.</p>
+                    
+                    <p class="text-caption" style="margin-bottom: 24px; color: var(--color-tertiary); font-weight: 600;">
+                        🌱 Ships plastic-free directly from maker's workshop in Arizona, USA.
+                    </p>
+
+                    <div style="display: flex; gap: 12px;">
+                        <a href="#toast-cart" class="btn btn-primary btn-lg" style="flex: 1; text-align: center;">Add to Cart • $120.00</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ====================================================================
+         Notification Toast (Pure CSS via :target)
+         ==================================================================== -->
+    <div class="toast" id="toast-cart">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <span>Item added to your Nest Cart!</span>
+        <a href="#marketplace" class="toast-close" aria-label="Close notification">✕</a>
+    </div>
+
+    <!-- ====================================================================
+         Footer
+         ==================================================================== -->
+    <footer id="story">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <a href="#top" class="brand-logo">
+                    <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 3L2 12h3v8h14v-8h3L12 3z"/>
+                    </svg>
+                    MarketNest
+                </a>
+                <p class="text-body-sm">A warm, community-driven marketplace championing independent craftspeople, handmade authenticity, and slow living.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Marketplace</h4>
+                <ul class="footer-links">
+                    <li><a href="#marketplace">Ceramics &amp; Pottery</a></li>
+                    <li><a href="#marketplace">Handcrafted Jewelry</a></li>
+                    <li><a href="#marketplace">Textiles &amp; Pillows</a></li>
+                    <li><a href="#marketplace">Custom Woodwork</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Artisans</h4>
+                <ul class="footer-links">
+                    <li><a href="#sellers">Become a Seller</a></li>
+                    <li><a href="#sellers">Maker Guidelines</a></li>
+                    <li><a href="#sellers">Community Forum</a></li>
+                    <li><a href="#sellers">Seller Stories</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>About</h4>
+                <ul class="footer-links">
+                    <li><a href="#story">Our Ethics</a></li>
+                    <li><a href="#story">Sustainability</a></li>
+                    <li><a href="#story">Journal &amp; Guides</a></li>
+                    <li><a href="#story">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 MarketNest Inc. Built with love for real artisans.</p>
+            <p class="font-mono">Order Tracking available on all artisan shipments</p>
+        </div>
+    </footer>
+
+</body>
+</html>
