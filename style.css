@@ -106,7 +106,10 @@
     -webkit-tap-highlight-color: transparent;
 }
 
-
+html {
+    scroll-behavior: smooth;
+    
+}
 
 body {
     background-color: var(--color-bg);
@@ -115,8 +118,9 @@ body {
     font-size: 16px;
     line-height: 1.6;
     overflow-x: hidden;
-    width: 100%;
+    
 }
+
 
 /* Hidden inputs for pure CSS state management */
 .state-toggle {
@@ -151,7 +155,7 @@ body {
    Buttons
    ========================================================================== */
 .btn {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     font-family: var(--font-body);
@@ -163,7 +167,16 @@ body {
     border: 1.5px solid transparent;
     gap: 8px;
     white-space: nowrap;
+        max-width: 100%;           /* prevent overflow */
+    overflow: hidden;          /* hide accidental overflow */
+    text-overflow: ellipsis;   /* clean fallback */
 }
+.card-footer {
+    flex-wrap: wrap;            /* allow wrapping */
+    gap: 12px;                  /* spacing when wrapped */
+}
+
+
 
 .btn-md { height: 42px; padding: 0 24px; font-size: 15px; }
 .btn-sm { height: 34px; padding: 0 16px; font-size: 13px; }
@@ -210,27 +223,23 @@ body {
    Header & Navigation
    ========================================================================== */
 header {
-        width: 580px;
     background-color: var(--color-surface);
     border-bottom: 1px solid var(--color-border-subtle);
-
+    position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 300;
     animation: slideDown 0.4s ease-out;
-   
-
 }
 
 .header-container {
     max-width: 100%;
- 
     margin: 0 auto;
     padding: 16px 24px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 20px;
-    box-sizing: border-box;
+    gap: 24px;
+     box-sizing: border-box;
 }
 
 .brand-logo {
@@ -439,12 +448,29 @@ header {
    Main Marketplace Layout
    ========================================================================== */
 .main-container {
-    max-width: 1280px;
+    max-width: 100%;
     margin: 0 auto;
     padding: 40px 24px 80px 24px;
     display: grid;
     grid-template-columns: 260px 1fr;
     gap: 32px;
+}
+
+/* Grid items default to min-width:auto, so unbreakable content (like the
+   filter button's label) can force the grid — and the whole page — wider
+   than the viewport. This is what breaks edge-to-edge layout on phones. */
+.main-container > * {
+    min-width: 0;
+}
+
+.filter-trigger-wrap {
+    min-width: 0;
+}
+
+.filter-mobile-trigger {
+    min-width: 0;
+    white-space: normal;
+    text-align: center;
 }
 
 /* Sidebar Filters */
@@ -610,9 +636,9 @@ header {
 .category-scroll {
     display: flex;
     gap: 10px;
-
+    overflow-x: auto;
     padding-bottom: 8px;
-  
+    scrollbar-width: thin;
 }
 
 .category-chip {
@@ -864,7 +890,7 @@ header {
 
 .sellers-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
     gap: 32px;
 }
 
@@ -1229,20 +1255,30 @@ footer {
 /* ==========================================================================
    Responsive Breakpoints
    ========================================================================== */
-   html{
-    font-size: calc((100/11)* 1rem) !important;
-    scroll-behavior:smooth !important;
-     
-    
-   }
 @media (max-width: 1024px) {
     .main-container {
         grid-template-columns: 220px 1fr;
         gap: 20px;
-        font-size:81% !important;
     }
     .product-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Header switches to the hamburger/drawer pattern starting at tablet
+       width, instead of only at 768px. This avoids the nav links and the
+       search box getting squeezed into an unreadable sliver on tablets. */
+    .header-container {
+        gap: 16px;
+    }
+
+    .header-search,
+    .nav-links {
+        display: none;
+    }
+
+    .mobile-toggle,
+    .filter-mobile-trigger {
+        display: flex;
     }
 }
 
@@ -1250,17 +1286,6 @@ footer {
     .main-container {
         grid-template-columns: 1fr;
         padding: 20px 16px 48px 16px;
-        font-size:72% !important;
-    }
-
-    .header-search, 
-    .nav-links {
-        display: none;
-    }
-
-    .mobile-toggle, 
-    .filter-mobile-trigger {
-        display: flex;
     }
 
     .sidebar-filter {
@@ -1302,7 +1327,6 @@ footer {
 @media (max-width: 480px) {
     .product-grid {
         grid-template-columns: 1fr;
-        font-size: 91% !important;
     }
 
     .footer-container {
@@ -1324,6 +1348,80 @@ footer {
 
     .hero-desc {
         font-size: 16px;
+    }
+
+    .header-container {
+        max-width: 100%;
+        padding: 12px 12px;
+        gap: 8px;
+    }
+
+    .brand-logo {
+        font-size: 20px;
+    }
+
+    .brand-icon {
+        width: 26px;
+        height: 26px;
+    }
+}
+
+.product-card:nth-child(1) { animation-delay: 0.05s; }
+.product-card:nth-child(2) { animation-delay: 0.15s; }
+.product-card:nth-child(3) { animation-delay: 0.25s; }
+.product-card:nth-child(4) { animation-delay: 0.35s; }
+.product-card:nth-child(5) { animation-delay: 0.45s; }
+.product-card:nth-child(6) { animation-delay: 0.55s; }
+
+
+@supports (animation-timeline: view()) {
+    .seller-card {
+        animation: fadeInUp both linear;
+        animation-timeline: view();
+        animation-range: entry 0% cover 30%;
+    }
+}
+
+.btn-primary {
+    position: relative;
+    overflow: hidden;
+}
+.btn-primary::after {
+    content: "";
+    position: absolute;
+    top: 0; left: -100%;
+    width: 60%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
+    transition: left 0.6s ease;
+}
+.btn-primary:hover::after { left: 130%; }
+.btn-primary:active { transform: scale(0.95); }
+
+
+@keyframes heartPop {
+    0%   { transform: scale(1); }
+    40%  { transform: scale(1.35); }
+    100% { transform: scale(1); }
+}
+.fav-toggle-input:checked + .fav-btn {
+    animation: heartPop 0.35s ease;
+}
+
+
+@keyframes toastLife {
+    0%, 85% { transform: translateY(0); opacity: 1; }
+    100%    { transform: translateY(120px); opacity: 0; }
+}
+.toast:target {
+    animation: toastLife 3s ease forwards;
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-delay: 0s !important;
+        transition-duration: 0.01ms !important;
     }
 }
 .product-card:nth-child(1) { animation-delay: 0.05s; }
